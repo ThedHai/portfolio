@@ -1,0 +1,17 @@
+
+body::before{ /* adding space to because of the fixed- nav- bar*/
+    display: block;
+    content:'';
+    height: 60px;
+}
+@media(min-width: 768px){ /*if the screen is greater than 768 px */
+    .news-input {/* get a class name(.news-input) and do this after ( width: 50%;) */ 
+    width: 50%;
+
+    }
+}
+
+
+body{
+    background-image:linear-gradient(to bottom, blue,white);
+}

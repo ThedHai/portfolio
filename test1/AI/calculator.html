@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            width: 50px;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+    <form name="calculator">
+        <input type="text" name="display" id="display" disabled>
+        <br>
+        <input type="button" value="1" onclick="addToDisplay('1')">
+        <input type="button" value="2" onclick="addToDisplay('2')">
+        <input type="button" value="3" onclick="addToDisplay('3')">
+        <input type="button" value="/" onclick="addToDisplay('/')">
+        <br>
+        <input type="button" value="4" onclick="addToDisplay('4')">
+        <input type="button" value="5" onclick="addToDisplay('5')">
+        <input type="button" value="6" onclick="addToDisplay('6')">
+        <input type="button" value="-" onclick="addToDisplay('-')">
+        <br>
+        <input type="button" value="7" onclick="addToDisplay('7')">
+        <input type="button" value="8" onclick="addToDisplay('8')">
+        <input type="button" value="9" onclick="addToDisplay('9')">
+        <input type="button" value="+" onclick="addToDisplay('+')">
+        <br>
+        <input type="button" value="C" onclick="clearDisplay()">
+        <input type="button" value="0" onclick="addToDisplay('0')">
+        <input type="button" value="." onclick="addToDisplay('.')">
+        <input type="button" value="=" onclick="calculate()">
+    </form>
+
+    <script>
+        // Display what's clicked on calculator screen
+        function addToDisplay(value) {
+            document.calculator.display.value += value;
+        }
+        // Clear screen when 'C' is clicked
+        function clearDisplay() {
+            document.calculator.display.value = '';
+        }
+        //evaluate the expression enter, triggered by '=' button.
+        function calculate() {
+            try {
+                //No need to convert from string to int, done by JS
+                document.calculator.display.value = eval(document.calculator.display.value); 
+            } catch (error) {
+                document.calculator.display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>

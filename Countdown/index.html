@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            margin:0;
+            background-color: #23272a;
+            color: darkcyan;
+        }
+        .wrapper{
+            margin-top: 10em;
+        }
+        .form_wrapper{
+            background-color: #eee;
+            width: 25em;
+            margin: auto;
+            height: 35em;
+            padding: 1em;
+            overflow: hidden;
+            border-radius: 1em;
+            padding: 20px;
+        box-shadow:inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 .1em darkcyan,
+             1em 1em 1em rgba(0,0,0,0.9);
+        
+            
+
+        }
+        #signt{
+            color: none;
+            text-align: center;
+            font-size: x-large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .form{
+            background-color: none;
+            width: 80%;
+            margin: auto;
+            height: 20em;
+            padding: 1em;
+            overflow: hidden;
+            color: none;
+            
+        }
+        input{
+            font-size: x-large;
+            margin: auto;
+            margin-bottom: 1.5em;
+           background-color: #ddd;
+            width: 13em;
+            border-radius: 1em;
+            text-align: center;
+            padding: .3em;
+            border: none;
+            color: #333;
+            
+        }
+        h1{
+            margin: 0;
+            text-align: center;
+        }
+        #sub{
+            width: 50%;background-image:linear-gradient(to right, #23272a,darkcyan)
+            ;margin-left: 25%;
+            color: #ddd;
+        }
+        #sub:hover{
+            cursor: pointer;
+            color: aqua;
+        }
+    </style>
+    <title>Log In</title>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="form_wrapper">
+           
+                <h3 id="signt">Sign In</h3>
+
+            <form method="POST" action="log.php" class="form">
+                <input placeholder="Username" type="text" name="username"><br>
+                <input type="password" placeholder="Password" name="pass"><br>
+                <input type="submit" id="sub">
+                
+            </form>
+            <a href="#">Forgot Password?</a>
+            <div>Not a member?<a href="create_member.html">Create an Account   </a></div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

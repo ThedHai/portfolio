@@ -1,0 +1,66 @@
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right,#e66465, #9198e5);
+
+
+}
+
+.calculator-grid{
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: minmax(120px, auto) repeat(5 ,100px);
+}
+
+
+.calculator-grid >button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid #222;
+    border-radius: 9px;
+    outline: none;
+    background-color: rgba(255, 255, 250, .70);
+
+
+}
+
+.calculator-grid >button:hover{
+    background-color: rgba(255, 255, 255, .90);
+
+}
+
+/* create function that makes the tags w/t class called "span-two" span 2 columns*/
+.span-two{
+ grid-column: span 2;/*now these columns take up the space of 2 columns*/
+}
+
+/*coniguring the very first fraction unit (box)*/
+.output{
+
+    grid-column: 1/-1; /*from the first TOP Column all the way to the last TOP Column*/
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-radius: 9px;
+
+}
+
+.output .previous-operand{ /* .previous operand is inside of .output div-- top part of screen*/
+    color: rgba(255, 255, 250, .75);
+    font-size: 1.1rem;
+}
+
+.output .current-operand{ /* .current operand is inside of .output div-- bottom part of screen*/
+    color: white;
+    font-size: 2.5rem;
+}

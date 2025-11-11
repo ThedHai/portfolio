@@ -1,0 +1,166 @@
+
+  body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #eee;
+    background-image: url("./Reconnaisance/test.webp");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+   
+  
+  }
+  .logoutbut{
+    font-size: 2em;
+  }
+  
+nav{
+  background-color: none;
+  color: #eee;
+  font-size: 2em;
+  margin-bottom: .8em;
+}
+.wrapper{
+  margin:  0;
+  overflow: hidden;
+  height: auto;
+    
+} 
+#sidebar{
+  font-size: 3em; margin-top: -.5em; margin-left: .3em; color:darkcyan;cursor: pointer;
+  }
+.side_menue{
+  border-radius: .8em;
+  padding: 1.5em;
+  background-color: azure; 
+  margin: 1em;
+  width: 12em;  
+  height: 50%;
+  position: fixed;
+  display: none;
+  
+}
+#x{
+  margin-top: -.5em; float: right; font-size: 2em; color: darkcyan;
+  }
+  #x:hover{
+  color: lightcoral; cursor: pointer;
+  }
+  
+  /*------------------------------------------------------------------*/
+.content{
+  background-color: none;
+  align-items: center;
+  padding: .5em;
+  height: 60%;
+  width: 80%;
+  margin:auto;
+  overflow: hidden;
+  overflow-y: scroll;
+      
+      /*overflow-y: scroll;*/
+}
+
+
+
+#tt{
+  font-size: 3em;
+  margin: 1em;
+  margin-top: 1em;
+    color: darkcyan;
+    text-align: center;
+  background-color: none;
+  }
+  
+  .content >div{
+    float: left;
+    width: 20em;
+    align-items: center;
+    background-color: #ffd54f;
+    margin-left: 2em;
+    border-radius: .5em;
+    font-family: -apple-system, 
+      BlinkMacSystemFont, 
+      "Segoe UI", 
+      Roboto, 
+      Oxygen-Sans, 
+      Ubuntu, 
+      Cantarell, 
+      "Helvetica Neue", 
+      sans-serif;
+    
+  }
+  
+  
+  
+  .content >div:nth-child(odd){
+    background-color:#ffd54f;
+    }
+    .content >div:nth-child(even){
+    background-color:darkcyan;
+    }
+    /*------------------------------------------------------------------*/
+    .content >div>h3{
+    height: 2em;
+    font-size: .7em;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    /*background-color: #557a95;*/
+    }
+    
+   
+    
+    .demo_div{
+    color: #333;
+    margin: 2em auto;
+    width: 25em;
+    height: 8em;
+    padding: 1em;
+    text-align: center;
+    background-color: darkblue;
+    overflow: scroll;
+    
+    }
+    ul{
+   
+    /*background-color: crimson;*/
+    opacity: 100%;
+    }
+    li {
+    display: inline-block;
+    font-size: 1em;
+    list-style-type: none;
+    padding: .5em;
+    text-transform: uppercase;
+    }
+    
+    li span {
+    display: block;
+    
+    }
+    
+    li {
+      font-size: .5rem;
+      padding: .25rem;
+    }
+    
+    li span {
+      font-size: .9rem;
+    }
+    
+    
+    #week,#day,#hour,#min,#sec{
+    font-size: x-large;
+    background-color: none;
+    }
+    
+    
+    
+    /*----------------------------------------------------------------------------*/
+    
+  
+    
+    
+  
+  
+  

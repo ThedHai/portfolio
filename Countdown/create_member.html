@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <style>
+        body{
+            margin:0;
+            background-color: #23272a;
+            color: darkcyan;
+        }
+        .wrapper{
+          
+          margin: auto;
+          width: 40em;
+          height: 40em;
+          margin-top: 3em;
+          background-color: #eee;
+          border-radius: .5em;
+          padding-top: 4em;
+          padding: 2em;
+          box-shadow:inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 .1em darkcyan,
+             1em 1em 1em rgba(0,0,0,0.9);
+             overflow:hidden;
+             overflow-y: scroll;
+        }
+        .lg_form{
+          background-color: none;
+          
+          
+          padding: 2em;
+        }
+        h1{
+          text-align: center;
+          background-color: none;
+        }
+        input{
+          font-size: 1.8em;
+          border-radius: .2em;
+          background-color: #ddd;
+          border: none;
+          margin-bottom:1em ;
+        }
+        label{
+          font: 1.5em sans-serif;
+        }
+        #sub{
+            width: 50%;background-image:linear-gradient(to right, #23272a,darkcyan)
+            ;margin-left: 25%;
+            color: #ddd;
+        }
+        #sub:hover{
+            cursor: pointer;
+            color: aqua;
+        }
+        .back{
+          color:#eee; background-color: darkmagenta;font-size: x-large;border-radius: .5em;padding: .3em;
+
+        }
+        .back:hover{
+          color: darkturquoise;
+          cursor: pointer;
+         
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <a href="index.html" class="back" >Log In</a>
+  <h1> Create Account</h1>
+
+<form class="lg_form" name="myForm" action="create_member.php" onsubmit="return validateForm()" method="POST">
+<pre><label for="fname">First Name: </label><input type="text" name="fname" required>
+ </pre>
+ 
+ <pre><label for="lname">Last Name:</label> <input type="text" name="lname" required>
+</pre>
+
+ <!--<pre><label for="email">Email:         </label><input type="email" name="email" >
+</pre>-->
+
+ 
+ <pre><label for="username">Username:  </label><input type="username" name="username" required>
+</pre>
+
+ <pre><label for="pass">Password:             </label><input type="password" name="pass" required></pre>
+
+<pre><label for="confirm">Confirm Password:</label> <input type="password" name="confirm" required>
+</pre>
+ 
+<input type="submit" value="Create Account" id="sub"><br>
+</form>
+
+</div>
+<script>
+function validateForm() {
+
+
+  let get = function(variable, item, regex,desc ){
+    let x = document.forms["myForm"][variable].value;
+    if (x == "" ||  x ==null) {
+      alert(item+" must be filled out");
+      return true;
+    }else if(regex.test(x)==false){
+      alert(item+" must consisnt of "+desc)
+      return true;
+
+    }
+  }
+
+  var regexName = /^[A-Za-z.\-']+$/
+  var regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  if (get("fname","First Name",regexName,"Aphabets Only"))return false;
+  if (get("lname","Last Name",regexName,"Aphabets Only"))return false;
+
+  //if (get("email","Email",regex,"a Valid email Address"))return false;
+
+
+
+var pass = document.forms["myForm"]["pass"].value;
+var pass2 = document.forms["myForm"]["confirm"].value;
+
+if (pass.length> 10|| pass.length<5){
+  alert("Password must be Between 6-10 Characters.")
+  return false;
+}
+
+if(pass.localeCompare(pass2)){
+  alert("Passwords Do Not Match. Try Again!");
+  return false;
+}
+  
+
+}
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* Style for general purpose */		
+
+body{margin: 0;}
+
+#wrapper{
+		
+	width: 100%;
+	overflow-y: hidden;
+background-color: blue;
+}
+
+/* the list inside the left side nav*/
+li{
+	margin: 15px;
+list-style: none;
+	margin-left: 0;
+}
+/* div around list icons */
+#menu{
+
+	background-color: #444;
+	border-radius: 30px;
+	overflow: hidden;
+	margin:2px 0 30px 2px; 
+	text-align: center;
+	font-size: 20px;
+	width: 90px;
+}
+
+/*wrapper of side nav;*/
+#sidenav{
+	
+	background-color: #444; 
+	width: 100px; overflow:  hidden; height: 100%; float: left;
+	overflow-x: hidden;
+	position: fixed;
+	padding: 50px 10px 10px 10px;
+}
+#class-i{
+	float: left;
+	height: 200px;
+	width: 200px;
+	background-color: #eee;
+	margin: 25px 25px 25px 0;
+	border-radius: 10px;
+	box-shadow: 0 8px 6px -6px black;
+	overflow: hidden;
+}
+#class-wrapper{
+	margin-top: 10px;
+	height: 1000px;
+	width: 900px;
+	overflow: hidden;
+}
+#content{
+	height: 900px;
+}
+/*actual Dash*/
+#dash{
+	border-bottom: 2px solid #777;
+	width: 950px;
+	font-size: 50px;
+
+}
+/* wrapper that will contains classes from file "dash", contains image of apple*/
+#main-wrapper-d{
+	float: left;
+	height: 400px;
+	background-image: url('https://wallpaperplay.com/walls/full/0/b/0/395027.jpg'); background-size: 100% 100%;
+	background-color: darkred;
+	padding-left: 150px;
+	width: 1000px;
+	margin-left: 300px;
+}
+/* constains div, called side on the right side that says, TO DO*/
+#side-w{
+	float: right;
+	/*background-color: #699;*/
+	width: 250px;
+	height: auto;
+	overflow: hidden;
+	padding: 10px;
+}
+/* holds the box that contains the To DO List*/
+#side{
+	height: 100%;
+	overflow: hidden;
+}
+/* To DO header tag */
+#td{
+	border-bottom: 2px solid #aaa;
+	font-size: 20px;
+	/*background-color: yellow;*/
+}
+
+/* ---------- from dash -------*/
+#c-img{
+	background-color: #2F4F4F;
+	height: 120px;
+	border: 1px solid #444;
+}
+#C-info,#C-info2{
+	background-color: #eee; height: 80px;
+}
+
+/* --------------- anonymous -------------*/
+
+
+/* -------------------------------------The Modal (background) -----------------------------------------------------*/
+.modal, .inbox-m, .help{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content, .inbox-cont, .help-cont {
+  width: 400px;
+  height: 600px;
+  background-color: #8B0000;
+  margin: -50px 0 0 120px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+}
+
+/* The Close Button */
+.close , .clz, .hel{
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,.clz:hover,.hel:hover,
+.close:focus,.clz:focus,.hel:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*-----------------------------------------------------------------------------------------------*/

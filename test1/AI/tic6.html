@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 5 Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        /* responsible for creatin the colums*/
+        #board {
+            display: grid;
+            /* grid-template-columns: create layout for 1 grid, repeat(9, 60px) repeats this layout 9 times-> 9 grids. */
+            grid-template-columns: repeat(9, 60px);
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        .cell {
+            /*format for each cell*/
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid #333;
+        }
+        /* cell darken when hover over it to indicate positioning*/
+        .cell:hover {
+            background-color: #eee;
+        }
+        /* Each user's color*/
+        .circle {color: blue; }
+        .cross { color: red;}
+    </style>
+</head>
+<body>
+    <h2>5-in-a-Row Game(morpion)</h2>
+    <div id="board"></div>
+
+    <script>
+        //getting DOM oject to place Board in
+        const board = document.getElementById('board');
+        //current player is X' by default, tracking whose's turn it is
+        let currentPlayer = 'X';
+        //2D array to track the frame of the board, a 9x9 frame
+        let gameBoard = Array.from({ length: 9 }, () => Array(9).fill(''));
+
+
+        function createBoard() {
+            // creates 81 cell
+            for (let i = 0; i < 81; i++) { 
+                const cell = document.createElement('div');
+                //to dynamically update this class's style, making it interactive. See "cell" in CSS
+                cell.classList.add('cell'); 
+                //converting the single loop counter (i) into a 2D coordinate system (row and column). Integer division determines the row number. For i from 0-8, Math.floor(i / 9) is 0 (Row 0). For i from 9-17, the result is 1 (Row 1), and so on. exp: 0/9=1 -> row[0] , 10/9=1.+ -> row[1]
+                const row = Math.floor(i / 9);
+                //const col = i % 9;: The modulo operator (%) calculates the remainder, which determines the column number. i % 9 always cycles from 0 up to 8 for every row. exp: 9%9 =0 -> col[0], 10%9 =1 -> col[1].
+                const col = i % 9;
+                //The calculated row and col values are stored as custom HTML data attributes on the element itself, allows other functions (like cellClick) to retrieve the exact location of the cell that was clicked without having to recalculate it. exp: data-row ="1", data-col="0" correspong to grid[1][0]
+                cell.setAttribute('data-row', row);
+                cell.setAttribute('data-col', col);
+                //find keep track of which cells is clicked aand place an "X" or "O" depending on whose turn. 
+                cell.addEventListener('click', cellClick);
+                board.appendChild(cell);
+            }
+        }
+
+    //---------------------------------------------| DRIVE |---------------------------------|
+        //get current grid upon click, takes 'click' as event that trigers action
+        function cellClick(event) {
+            const row = parseInt(event.target.getAttribute('data-row'));
+            const col = parseInt(event.target.getAttribute('data-col'));
+            
+            //check if clicked colum is empty, add current player sign and color if empty. exp:  blue "O"
+            if (gameBoard[row][col] === '') {
+                gameBoard[row][col] = currentPlayer;
+                event.target.textContent = currentPlayer;
+                //switching color based on player
+                event.target.classList.add(currentPlayer === 'X' ? 'cross' : 'circle');
+
+                // Check for winner after each play.
+                if (checkWinner(row, col)) {
+                    //checking winner based on symbol or current player
+                    alert(`${currentPlayer} wins!`);
+                    resetGame();
+                } else if (isBoardFull()) {
+                    alert("It's a draw!");
+                    resetGame();
+                } else {
+                    //switch player after one player plays (next turn)
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
+            }
+        }
+
+    // ------------------------| LOGIC |-----------------------------\\
+        // ------- Dispatcher ----------\\
+        function checkWinner(row, col) {  
+            return (
+                checkDirection(row, col, 1, 0) ||  // Scans the grid hHorizontal
+                checkDirection(row, col, 0, 1) ||  // Scans the grid Vertical
+                checkDirection(row, col, 1, 1) ||  // Scans the grid Diagonal \ (from left to right)
+                checkDirection(row, col, 1, -1)    // Scans the grid Diagonal / (from right to left)
+            );
+        }
+
+        // --------------- Scanner ----------------\\
+        function checkDirection(row, col, rowIncrement, colIncrement) {
+            const symbol = gameBoard[row][col];
+            let count = 1;
+            
+            //Logic to check Foward dir center point, scans checking Down, Right, Down-Right, Down Left (repeat whith incremented Cells in respective direction, untill Break, or i==5)
+            for (let i = 1; i < 5; i++) {
+                /*exp:
+                i	newRow = row + i * rowIncrement	    Result
+                1	4 + 1×1 = 5	                        move down 1 cell
+                2	4 + 2×1 = 6	                        move down 2 cells
+                */
+                const newRow = row + i * rowIncrement; 
+                const newCol = col + i * colIncrement;
+                console.log("F-row: "+(newRow) +" F-col: "+(newCol));
+
+                // Check if coordinates are within the 9x9 board boundaries
+                if (
+                    newRow >= 0 && newRow < 9 &&
+                    newCol >= 0 && newCol < 9 &&
+                    // Check if the cell matches the current symbol
+                    gameBoard[newRow][newCol] === symbol
+                ) {
+                    console.log("F   match");
+                    count++; // It matches, increment the count
+                } else {
+                    console.log("F--No match");
+                    break;// if the previous symbol "X" or "O" is not same as/does not match current symbol, quit
+                }
+            }
+            
+            //Logic to check Backward dir from center point. Scans checking Up, Left, Up-Left,Up-Right  (repeat whith incremented Cells in respective direction, untill Break, or i==5)
+            for (let i = 1; i < 5; i++) {
+                const newRow = row - i * rowIncrement;
+                const newCol = col - i * colIncrement;
+                console.log("B-row: "+(newRow) +" B-col: "+ (newCol));
+
+                // Check if coordinates are within the 9x9 board boundaries
+                if (
+                    newRow >= 0 && newRow < 9 &&
+                    newCol >= 0 && newCol < 9 &&
+                    // Check if the cell matches the current symbol
+                    gameBoard[newRow][newCol] === symbol
+                ) {
+                    console.log("F   match");
+                    count++; // It matches, increment the count
+                } else {
+                    console.log("B--No match");
+                    break;// It doesn't match or is off the board, stop scanning this direction
+                }
+            }
+            console.log("----------next directions--------");
+            return count >= 5;
+        }
+
+
+        function isBoardFull() {
+            return gameBoard.every(row => row.every(cell => cell !== ''));
+        }
+
+        function resetGame() {
+            gameBoard = Array.from({ length: 9 }, () => Array(9).fill(''));
+            document.querySelectorAll('.cell').forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('cross', 'circle');
+            });
+            currentPlayer = 'X';
+        }
+
+        //----------- Initializer -------------\\-> Calls the createBoard function immediately to build the visible HTML game board when the script runs. layout is from css " #board  "
+        createBoard();
+    </script>
+</body>
+</html>

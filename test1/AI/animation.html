@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Figure Stairs Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #stick-figure {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .leg {
+            width: 10px;
+            height: 30px;
+            background-color: #333;
+            position: absolute;
+        }
+
+        #left-leg {
+            left: 5px;
+        }
+
+        #right-leg {
+            right: 5px;
+        }
+
+        .body {
+            width: 20px;
+            height: 30px;
+            background-color: #333;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="stick-figure">
+        <div id="left-leg" class="leg"></div>
+        <div id="right-leg" class="leg"></div>
+        <div class="body"></div>
+    </div>
+
+    <script>
+        const stickFigure = document.getElementById('stick-figure');
+        const leftLeg = document.getElementById('left-leg');
+        const rightLeg = document.getElementById('right-leg');
+
+        let step = 0;
+
+        function walkUpStairs() {
+            if (step < 10) {
+                step++;
+            } else {
+                step = 0;
+            }
+
+            const offsetY = step * 30;
+
+            leftLeg.style.bottom = `${offsetY}px`;
+            rightLeg.style.bottom = `${offsetY}px`;
+
+            requestAnimationFrame(walkUpStairs);
+        }
+
+        walkUpStairs();
+    </script>
+</body>
+</html>
