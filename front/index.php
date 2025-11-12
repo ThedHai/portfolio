@@ -43,22 +43,7 @@ if(!empty($_POST)){
 		$message =$message.$obj->error;
 	}
 }
-function send_to_middle($action, $data){
-	
-	$info = array('action'=>$action, 'data'=>$data);
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://localhost:8888/Portfolio/front/test2.php");
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $info);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //storing curl execution result
-    $result = curl_exec($ch);
-    curl_close($ch);
-	
-    return "----------";
-    //return $result;
-	
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en-US">

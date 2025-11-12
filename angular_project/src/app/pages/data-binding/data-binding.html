@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-2">Student Name: {{studentName}} </div>
+    <div class="col-2">Current Course: {{currentCourse}} </div>
+    <div class="col-2">Active Status: {{isActive}} </div>
+</div>
+<div class="row">
+    <div class="col-2"> 
+        <input type="text" [value]="studentName" />
+    </div>
+    <div [class]="marksClass">{{marks}}</div>
+    <input [type]="inputType" [checked]="isActive"/>
+    <button type="button" (click)="showAlert()">Show Alert</button>
+
+    <input type="text" [(ngModel)]="studentName" />
+    <button type="button" (click)="changeCurrentCourse('Math 200')">Math 200</button>
+    <button type="button" (click)="changeCurrentCourse('English 102')">Eng 102</button>
+</div>
